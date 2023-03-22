@@ -10,15 +10,19 @@ export default function SignIn() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    function login(){
+        //se sucesso to=/subscriptions
+        //se falha to=/home e exibir alert
+    }
 
     return (
         <>
-            <Form>
+            <Form onSubmit={login}>
                 <InputStyled name="name" type="name" placeholder="Nome" required />
                 <InputStyled name="cpf" type="cpf" placeholder="CPF" required minLength="11"/>
                 <InputStyled name="email" type="email" placeholder="E-mail" required />
                 <InputStyled name="password" type="password" placeholder="Senha" required />
-                <ButtonStyled>ENTRAR</ButtonStyled>
+                <ButtonStyled type="submit">ENTRAR</ButtonStyled>
                 <Tosignin to="/">Já possui uma conta? Entre</Tosignin>
             </Form>
         </>)

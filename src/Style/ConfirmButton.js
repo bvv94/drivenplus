@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const ButtonStyled = styled.button`
+const ConfirmButton = styled.button`
     background-color: #FF4791;
     color: white;
     border: 1px solid #FF4791;
@@ -12,4 +12,4 @@ const ButtonStyled = styled.button`
     font-size:14px;
     margin-bottom: 24px;
 `
-export default ButtonStyled
+export default ConfirmButton

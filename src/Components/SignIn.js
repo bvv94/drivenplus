@@ -39,7 +39,6 @@ const Form = styled.form`
     margin-top: 147px;
     display: flex;
     flex-direction: column;
-    display: flex;
     align-items: center;
 `
 const Tosignin = styled(Link)`

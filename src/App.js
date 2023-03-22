@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogIn from './Components/LogIn';
 import SignIn from './Components/SignIn';
 import Subscriptions from './Components/Subscriptions';
+import Plus from './Components/Plans/Plus';
+import HomePlus from './Components/HomePlus';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <Routes>
           <Route path='/' element={<LogIn />}/>
           <Route path='/cadastro' element={<SignIn />}/>
-          <Route path='/Subscriptions' element={<Subscriptions/>}/>
+          <Route path='/subscriptions' element={<Subscriptions/>}/>
+          <Route path='/plus' element={<Plus/>}></Route>
+          <Route path='/homeplus' element={<HomePlus/>}></Route>
         </Routes>
       {/* </UserProvider> */}
     </BrowserRouter>

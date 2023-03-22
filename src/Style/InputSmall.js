@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const InputStyled = styled.input`
+const InputSmall = styled.input`
     background-color: #FFFFFF;
     border-radius: 5px;
     border: 1px solid #FFFFFF;
     height: 52px;
-    width: 299px;
+    width: 145px;
     margin-bottom: 16px;
         ::placeholder{
             font-family: 'roboto';
@@ -14,4 +14,4 @@ const InputStyled = styled.input`
             color: #7E7E7E
         }
 `
-export default InputStyled;
+export default InputSmall

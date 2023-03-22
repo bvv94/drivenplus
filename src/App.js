@@ -1,18 +1,18 @@
 import GlobalStyle from './Style/GlobalStyle';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogIn from './Components/LogIn';
+import SignIn from './Components/SignIn';
 
 function App() {
   return (
     <BrowserRouter>
-      <UserProvider>
+      {/* <UserProvider> */}
         <GlobalStyle />
         <Routes>
-          <Route path='/' element={<LogIn />}></Route>
-          <Route path='/cadastro' element={<SignIn />}></Route>
-          <Route path='/hoje' element={<Today />}></Route>
-          <Route path="/habitos" element={<HabitScreen />} />
+          <Route path='/' element={<LogIn />}/>
+          <Route path='/cadastro' element={<SignIn />}/>
         </Routes>
-      </UserProvider>
+      {/* </UserProvider> */}
     </BrowserRouter>
   );
 }

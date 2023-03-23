@@ -22,19 +22,13 @@ export default function LogIn() {
         e.preventDefault();
         const promise = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", body)
 
-        console.log(token)
-        console.log(name)
-
         promise.then((res) => {
-            console.log(res.data)
-            console.log(res.data.membership)
-            console.log(res.data.token)
             setToken(res.data.token)
             setName(res.data.name)
             console.log(token)
             console.log(name)
             if (res.data.membership === null) {
-                alert("Assine Já!")
+                // alert("Assine Já!")
                 navigate('/subscriptions')
             }
             else {

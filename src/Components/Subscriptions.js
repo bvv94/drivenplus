@@ -12,12 +12,13 @@ export default function Subscriptions() {
 
     const { token } = useContext(UserContext)
     const [plans, setPlans] = useState([])
-    
+
     console.log(token)
     console.log(plans)
 
     useEffect(() => {
 
+        console.log(plans)
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         }
@@ -26,35 +27,32 @@ export default function Subscriptions() {
             .then((res) => {
                 console.log(res.data)
                 setPlans(res.data)
-                console.log(plans)
+
             })
             .catch((err) => {
-                console.error(err)
+                console.error(err.response.data.message)
             })
     }, []);
+
+    console.log(plans)
+    console.log(plans.image)
+
+
+
 
     return (
         <>
             <Subs>
                 <H1>Escolha seu Plano</H1>
-                <ButtonPlan>
-                    <LinkStyled to="/plus">
-                        <img src={plans.image} />
-                        <p>{plans.price}</p>
-                    </LinkStyled>
-                </ButtonPlan>
-                <ButtonPlan>
-                    <LinkStyled to="/gold">
-                        <img src={yellow} />
-                        <p>R$ 69,99</p>
-                    </LinkStyled>
-                </ButtonPlan>
-                <ButtonPlan>
-                    <LinkStyled to="/platinum">
-                        <img src={green} />
-                        <p>R$ 99,99</p>
-                    </LinkStyled>
-                </ButtonPlan>
+
+                {plans.map((p => (
+                    <ButtonPlan>
+                        <LinkStyled to="/plus">
+                            <img src={p.image} />
+                            <p>{p.price}</p>
+                        </LinkStyled>
+                    </ButtonPlan>
+                )))}
             </Subs>
         </>
     )

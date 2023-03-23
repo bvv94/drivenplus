@@ -2,7 +2,7 @@ import styled from "styled-components"
 import user from "../assets/profile.png"
 import plan from "../assets/white.svg"
 
-export default function HomePlus() {
+export default function Home() {
     return (
         <>
             <Screen>

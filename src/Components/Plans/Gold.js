@@ -16,7 +16,7 @@ export default function Plus() {
         setShow(true)
         return (
             <ConfirmBox>
-                <p>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</p>
+                <p>Tem certeza que deseja assinar o plano Driven Gold (R$ 69,99)?</p>
                 <ButtonsConf>
                     <YesNo back>Não</YesNo>
                     <YesNo>Sim</YesNo>
@@ -45,7 +45,7 @@ export default function Plus() {
                     <Title>
                         <img src={money} /><span>Preco: </span>
                     </Title>
-                    <p>R$ 39,99 cobrados mensalmente</p>
+                    <p>R$ 69,99 cobrados mensalmente</p>
                 </BenPrice>
             </Plan>
             <InputStyled name="cardname" type="text" placeholder="Nome impresso no cartão" required />
@@ -56,13 +56,13 @@ export default function Plus() {
             </ContainerSmall>
             <ButtonStyled onClick={confirm} >ASSINAR</ButtonStyled>
 
-            <ConfirmBox>
+            {/* <ConfirmBox>
                 <p>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</p>
                 <ButtonsConf>
                     <YesNo back>Não</YesNo>
                     <YesNo>Sim</YesNo>
                 </ButtonsConf>
-            </ConfirmBox>         
+            </ConfirmBox>          */}
         </Screen>)
 }
 

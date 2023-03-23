@@ -13,9 +13,6 @@ export default function Subscriptions() {
     const { token } = useContext(UserContext)
     const [plans, setPlans] = useState([])
 
-    console.log(token)
-    console.log(plans)
-
     useEffect(() => {
 
         console.log(plans)
@@ -25,20 +22,12 @@ export default function Subscriptions() {
 
         axios.get("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships", config)
             .then((res) => {
-                console.log(res.data)
                 setPlans(res.data)
-
             })
             .catch((err) => {
                 console.error(err.response.data.message)
             })
     }, []);
-
-    console.log(plans)
-    console.log(plans.image)
-
-
-
 
     return (
         <>
@@ -46,7 +35,7 @@ export default function Subscriptions() {
                 <H1>Escolha seu Plano</H1>
 
                 {plans.map((p => (
-                    <LinkStyled to={`/subscriptions/${p.id}`}>
+                    <LinkStyled key={p.id} to={`/subscriptions/${p.id}`}>
                         <ButtonPlan>
                             <img src={p.image} />
                             <p>{p.price}</p>

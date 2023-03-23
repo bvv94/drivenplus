@@ -6,7 +6,7 @@ import Subscriptions from './Components/Subscriptions';
 import Plus from './Components/Plans/Plus';
 import Gold from "./Components/Plans/Gold";
 import Platinum from "./Components/Plans/Platinum"
-import HomePlus from './Components/HomePlus';
+import Home from './Components/Home';
 import UserProvider from './Contexts/UserContext';
 
 
@@ -23,7 +23,7 @@ function App() {
           <Route path='subscriptions/1' element={<Plus/>}></Route>
           <Route path='subscriptions/2' element={<Gold/>}></Route>
           <Route path='subscriptions/3' element={<Platinum/>}></Route>
-          <Route path='/homeplus' element={<HomePlus/>}></Route>
+          <Route path='/home' element={<Home/>}></Route>
         </Routes>
       </UserProvider>
     </BrowserRouter>

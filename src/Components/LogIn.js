@@ -22,6 +22,7 @@ export default function LogIn() {
         e.preventDefault();
         const promise = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", body)
 
+
         promise.then((res) => {
             setToken(res.data.token)
             setName(res.data.name)
@@ -33,7 +34,7 @@ export default function LogIn() {
             }
             else {
                 alert("Já Inscrito!")
-                navigate('/homepluss')
+                navigate('/home')
             }
 
         })

@@ -46,12 +46,12 @@ export default function Subscriptions() {
                 <H1>Escolha seu Plano</H1>
 
                 {plans.map((p => (
-                    <ButtonPlan>
-                        <LinkStyled to="/plus">
+                    <LinkStyled to={`/subscriptions/${p.id}`}>
+                        <ButtonPlan>
                             <img src={p.image} />
                             <p>{p.price}</p>
-                        </LinkStyled>
-                    </ButtonPlan>
+                        </ButtonPlan>
+                    </LinkStyled>
                 )))}
             </Subs>
         </>

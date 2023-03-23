@@ -3,10 +3,35 @@ import yellow from "../assets/yellow.svg"
 import green from "../assets/green.svg"
 import { Link, useNavigate } from "react-router-dom"
 import white from "../assets/white.svg"
+import axios from "axios"
+import { useEffect, useState, useContext } from "react"
+import { UserContext } from '../Contexts/UserContext';
+
 
 export default function Subscriptions() {
 
+    const { token } = useContext(UserContext)
+    const [plans, setPlans] = useState([])
+    
+    console.log(token)
+    console.log(plans)
 
+    useEffect(() => {
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+
+        axios.get("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships", config)
+            .then((res) => {
+                console.log(res.data)
+                setPlans(res.data)
+                console.log(plans)
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+    }, []);
 
     return (
         <>
@@ -14,8 +39,8 @@ export default function Subscriptions() {
                 <H1>Escolha seu Plano</H1>
                 <ButtonPlan>
                     <LinkStyled to="/plus">
-                        <img src={white}/>
-                        <p>R$ 39,99</p>
+                        <img src={plans.image} />
+                        <p>{plans.price}</p>
                     </LinkStyled>
                 </ButtonPlan>
                 <ButtonPlan>

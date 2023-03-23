@@ -5,11 +5,14 @@ import SignIn from './Components/SignIn';
 import Subscriptions from './Components/Subscriptions';
 import Plus from './Components/Plans/Plus';
 import HomePlus from './Components/HomePlus';
+import UserProvider from './Contexts/UserContext';
+
 
 function App() {
+
   return (
     <BrowserRouter>
-      {/* <UserProvider> */}
+      <UserProvider>
         <GlobalStyle />
         <Routes>
           <Route path='/' element={<LogIn />}/>
@@ -18,7 +21,7 @@ function App() {
           <Route path='/plus' element={<Plus/>}></Route>
           <Route path='/homeplus' element={<HomePlus/>}></Route>
         </Routes>
-      {/* </UserProvider> */}
+      </UserProvider>
     </BrowserRouter>
   );
 }

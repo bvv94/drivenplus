@@ -24,7 +24,7 @@ export default function SignIn() {
 
         //se sucesso to=/subscriptions
         promise.then((res) => {
-            console.log(res)
+            console.log(res.data)
             navigate("/subscriptions")
         })
         //se falha to=/home e exibir alert

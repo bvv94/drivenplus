@@ -13,7 +13,7 @@ export default function LogIn() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     // const {token, setToken} = useContext(TokenContext)
-    const { name, setName, token, setToken } = useContext(UserContext)
+    const { name, setName, token, setToken, id, setId } = useContext(UserContext)
     const navigate = useNavigate();
 
     function login(e) {
@@ -26,6 +26,10 @@ export default function LogIn() {
         promise.then((res) => {
             setToken(res.data.token)
             setName(res.data.name)
+            // setId(res.data.membership.id)
+            if (res.data.membership && res.data.membership.id) {
+                setId(res.data.membership.id)
+            }
             console.log(token)
             console.log(name)
             if (res.data.membership === null) {
@@ -33,7 +37,7 @@ export default function LogIn() {
                 navigate('/subscriptions')
             }
             else {
-                alert("Já Inscrito!")
+                // alert("Já Inscrito!")
                 navigate('/home')
             }
 

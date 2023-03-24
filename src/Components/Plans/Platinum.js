@@ -5,29 +5,65 @@ import money from "../../assets/price.png"
 import InputStyled from "../../Style/StyledInput"
 import InputSmall from "../../Style/InputSmall"
 import ButtonStyled from "../../Style/StyledButton"
-import { useState } from "react"
+import { useState, useContext} from "react"
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"
+import { UserContext } from '../../Contexts/UserContext';
 
-export default function Plus() {
+export default function Platinum() {
 
     const [show, setShow] = useState(false)
+    const { token, UserData, setUserData } = useContext(UserContext)
+    const [membershipId, setMembershipId] = useState(1)
+    const [cardName, setCardName] = useState("")
+    const [cardNumber, setCardNumber] = useState("")
+    const [securityNumber, setSecurityNumber] = useState(0)
+    const [expirationDate, setExpirationDate] = useState("")
+    const [data, setData] = useState([])
+    const navigate = useNavigate();
 
-    function confirm() {
-        console.log("entrou confirm")
-        setShow(true)
-        return (
-            <ConfirmBox>
-                <p>Tem certeza que deseja assinar o plano Driven Platinum (R$ 99,99)?</p>
-                <ButtonsConf>
-                    <YesNo back>Não</YesNo>
-                    <YesNo>Sim</YesNo>
-                </ButtonsConf>
-            </ConfirmBox>
-        )
+    function Confirm(e) {
+
+        const body = { membershipId, cardName, cardNumber, securityNumber, expirationDate }
+
+        e.preventDefault();
+        console.log("Assinando");
+        console.log (token)
+        console.log (body)
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+
+        axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", body, config)
+            .then((res) => {
+                console.log(res.data)
+                console.log("enviou")
+                setUserData(res.data)
+                navigate("/home")
+                // ConfirmBox()
+
+            })
+            .catch((err) => {
+                console.error(err.response.data.message)
+                console.log("erro")
+            })
+            console.log(data)
+        // return (
+        //     <ConfirmBoxDiv>
+        //         <p>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</p>
+        //         <ButtonsConf>
+        //             <YesNo>Não</YesNo>
+        //             <YesNo onClick={console.log("Sim")}>Sim</YesNo>
+        //         </ButtonsConf>
+        //     </ConfirmBoxDiv>
+        // )
+
     }
 
     return (
         <Screen>
-            <Top>
+            <Top to="/subscriptions">
                 <ion-icon name="arrow-back"></ion-icon>
             </Top>
             <Plan>
@@ -48,14 +84,19 @@ export default function Plus() {
                     <p>R$ 99,99 cobrados mensalmente</p>
                 </BenPrice>
             </Plan>
-            <InputStyled name="cardname" type="text" placeholder="Nome impresso no cartão" required />
-            <InputStyled name="card" type="number" placeholder="Digitos do cartão" required />
-            <ContainerSmall>
-                <InputSmall name="seg" type="number" placeholder="Código de segurança" required />
-                <InputSmall name="carddate" type="date" placeholder="Validade" required />
-            </ContainerSmall>
-            <ButtonStyled onClick={confirm} >ASSINAR</ButtonStyled>
-
+            <Form onSubmit={Confirm}>
+                <InputStyled onChange={e => setCardName(e.target.value)} value={cardName}
+                    name="cardname" type="text" placeholder="Nome impresso no cartão" required />
+                <InputStyled onChange={e => setCardNumber(e.target.value)} value={cardNumber}
+                    name="card" type="number" placeholder="Digitos do cartão" required />
+                <ContainerSmall>
+                    <InputSmall onChange={e => setSecurityNumber(e.target.value)} value={securityNumber}
+                        name="seg" type="number" placeholder="Código de segurança" required />
+                    <InputSmall onChange={e => setExpirationDate(e.target.value)} value={expirationDate}
+                        name="carddate" type="date" placeholder="Validade" required />
+                </ContainerSmall>
+                <ButtonStyled type="submit">ASSINAR</ButtonStyled>
+            </Form>
             {/* <ConfirmBox>
                 <p>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</p>
                 <ButtonsConf>
@@ -77,7 +118,7 @@ const Screen = styled.div`
     align-items: center;
     position: relative;
 `
-const Top = styled.div`
+const Top = styled(Link)`
     margin: 22px 22px;
     width: 372px;
     display: flex;
@@ -155,4 +196,8 @@ const ButtonsConf = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+`
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
 `

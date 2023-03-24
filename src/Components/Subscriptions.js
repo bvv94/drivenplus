@@ -1,8 +1,5 @@
 import styled from "styled-components"
-import yellow from "../assets/yellow.svg"
-import green from "../assets/green.svg"
 import { Link, useNavigate } from "react-router-dom"
-import white from "../assets/white.svg"
 import axios from "axios"
 import { useEffect, useState, useContext } from "react"
 import { UserContext } from '../Contexts/UserContext';

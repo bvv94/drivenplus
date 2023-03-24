@@ -5,7 +5,7 @@ import money from "../../assets/price.png"
 import InputStyled from "../../Style/StyledInput"
 import InputSmall from "../../Style/InputSmall"
 import ButtonStyled from "../../Style/StyledButton"
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext} from "react"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { UserContext } from '../../Contexts/UserContext';
@@ -13,13 +13,12 @@ import { UserContext } from '../../Contexts/UserContext';
 export default function Plus() {
 
     const [show, setShow] = useState(false)
-    const { token } = useContext(UserContext)
+    const { token, UserData, setUserData } = useContext(UserContext)
     const [membershipId, setMembershipId] = useState(1)
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
     const [securityNumber, setSecurityNumber] = useState(0)
     const [expirationDate, setExpirationDate] = useState("")
-    const [data, setData] = useState([])
     const navigate = useNavigate();
 
     // function confirm(e) {
@@ -45,15 +44,15 @@ export default function Plus() {
             .then((res) => {
                 console.log(res.data)
                 console.log("enviou")
-                setData(res.data)
+                setUserData(res.data)
+                navigate("/home")
                 // ConfirmBox()
 
             })
             .catch((err) => {
-                console.error(err.response.data)
+                console.error(err.response.data.message)
                 console.log("erro")
             })
-            console.log(data)
         // return (
         //     <ConfirmBoxDiv>
         //         <p>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</p>
@@ -72,7 +71,7 @@ export default function Plus() {
 
     return (
         <Screen>
-            <Top>
+            <Top to="/subscriptions">
                 <ion-icon name="arrow-back"></ion-icon>
             </Top>
             <Plan>

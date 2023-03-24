@@ -29,7 +29,7 @@ export default function SignIn() {
         })
         //se falha to=/home e exibir alert
         promise.catch((err) =>
-            alert(err.response.statusText)
+            alert(err.response.data.message)
         )
     }
 
@@ -40,7 +40,7 @@ export default function SignIn() {
                 <InputStyled onChange={e=> setCpf(e.target.value)} value={cpf} name="cpf" type="text" placeholder="CPF" required />
                 <InputStyled onChange={e=> setEmail(e.target.value)} value={email} name="email" type="email" placeholder="E-mail" required />
                 <InputStyled onChange={e=> setPassword(e.target.value)} value={password} name="password" type="password" placeholder="Senha" required />
-                <ButtonStyled type="submit">ENTRAR</ButtonStyled>
+                <ButtonStyled type="submit">CADASTRAR</ButtonStyled>
                 <Tosignin to="/">Já possui uma conta? Entre</Tosignin>
             </Form>
         </>)

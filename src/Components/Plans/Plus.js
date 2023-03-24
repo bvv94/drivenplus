@@ -136,7 +136,7 @@ const Top = styled(Link)`
     }
 `
 const Plan = styled.div`
-    margin-top: 35px;
+    margin-top: 5px;
     font-family: 'roboto';
     margin-bottom: 22px;
     h1{        

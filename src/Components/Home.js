@@ -81,7 +81,7 @@ export default function Home() {
                         </ButtonPlan>
                     </ChangeButton>
                     <ChangeButton>
-                        <ButtonCancelar to="/subscriptions" >
+                        <ButtonCancelar to="/subscriptions" onClick={cancelar}>
                             Cancelar Plano
                         </ButtonCancelar>
                     </ChangeButton>

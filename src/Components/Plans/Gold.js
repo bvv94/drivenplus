@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import white from "../../assets/white.svg"
+import yellow from "../../assets/yellow.svg"
 import ben from "../../assets/benefits.png"
 import money from "../../assets/price.png"
 import InputStyled from "../../Style/StyledInput"
@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Gold() {
 
     const [show, setShow] = useState(false)
-    const { token, UserData, setUserData } = useContext(UserContext)
+    const { token, UserData, setUserData, setId } = useContext(UserContext)
     const [membershipId, setMembershipId] = useState(1)
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
@@ -21,6 +21,8 @@ export default function Gold() {
     const [expirationDate, setExpirationDate] = useState("")
     const [data, setData] = useState([])
     const navigate = useNavigate();
+
+    setId(2)
 
     function Confirm(e) {
 
@@ -65,7 +67,7 @@ export default function Gold() {
                 <ion-icon name="arrow-back"></ion-icon>
             </Top>
             <Plan>
-                <img src={white} />
+                <img src={yellow} />
                 <h1>Driven Gold</h1>
 
                 <BenPrice>

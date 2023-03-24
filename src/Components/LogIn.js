@@ -29,9 +29,10 @@ export default function LogIn() {
             // setId(res.data.membership.id)
             if (res.data.membership && res.data.membership.id) {
                 setId(res.data.membership.id)
+                console.log(res.data)
+                console.log(res.data.membership.id)
             }
-            console.log(token)
-            console.log(name)
+
             if (res.data.membership === null) {
                 // alert("Assine Já!")
                 navigate('/subscriptions')
@@ -45,6 +46,9 @@ export default function LogIn() {
         promise.catch((err) => {
             alert(err.response.data.message)
         })
+
+        console.log(token)
+        console.log(name)
 
     }
 

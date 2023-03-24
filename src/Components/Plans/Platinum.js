@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import white from "../../assets/white.svg"
+import green from "../../assets/green.svg"
 import ben from "../../assets/benefits.png"
 import money from "../../assets/price.png"
 import InputStyled from "../../Style/StyledInput"
@@ -13,7 +13,7 @@ import { UserContext } from '../../Contexts/UserContext';
 export default function Platinum() {
 
     const [show, setShow] = useState(false)
-    const { token, UserData, setUserData } = useContext(UserContext)
+    const { token, UserData, setUserData, setId } = useContext(UserContext)
     const [membershipId, setMembershipId] = useState(1)
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
@@ -22,6 +22,8 @@ export default function Platinum() {
     const [data, setData] = useState([])
     const navigate = useNavigate();
 
+    setId(3)
+    
     function Confirm(e) {
 
         const body = { membershipId, cardName, cardNumber, securityNumber, expirationDate }
@@ -67,7 +69,7 @@ export default function Platinum() {
                 <ion-icon name="arrow-back"></ion-icon>
             </Top>
             <Plan>
-                <img src={white} />
+                <img src={green} />
                 <h1>Driven Platinum</h1>
 
                 <BenPrice>

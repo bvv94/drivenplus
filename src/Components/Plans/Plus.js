@@ -13,7 +13,7 @@ import { UserContext } from '../../Contexts/UserContext';
 export default function Plus() {
 
     const [show, setShow] = useState(false)
-    const { token, UserData, setUserData } = useContext(UserContext)
+    const { token, UserData, setUserData, setId } = useContext(UserContext)
     const [membershipId, setMembershipId] = useState(1)
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
@@ -27,6 +27,9 @@ export default function Plus() {
     //     ConfirmBox(e)
     // }
     // function ConfirmBox(e) {
+    
+    setId(1)
+
     function Confirm(e) {
 
         const body = { membershipId, cardName, cardNumber, securityNumber, expirationDate }
